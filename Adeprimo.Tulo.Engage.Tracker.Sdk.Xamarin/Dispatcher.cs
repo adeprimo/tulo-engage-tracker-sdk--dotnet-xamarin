@@ -44,7 +44,7 @@ namespace Adeprimo.Tulo.Engage.Tracker.Sdk.Xamarin
             var data = sendEvent.Build();
             try
             {
-                //var content = new StringContent(data, Encoding.UTF8, "application/json");
+                var content = new StringContent(data, Encoding.UTF8, "application/json");
                 var response = _httpClient.PostAsync(_eventUrl, content).Result;
                 Util.LogInfo($"Event tracked: {response.IsSuccessStatusCode}");
             }
