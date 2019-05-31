@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Adeprimo.Tulo.Engage.Tracker.Sdk.Xamarin.Models;
 using Adeprimo.Tulo.Engage.Tracker.Sdk.Xamarin.Services;
 
@@ -34,7 +35,20 @@ namespace Adeprimo.Tulo.Engage.Tracker.Sdk.Xamarin
             _storage.User = user;
         }
 
+        public async Task TrackAsync(string path, EngageEvent trackEvent)
+        {
+            var theEvent = CompleteEvent(path, trackEvent);
+            await _dispatcher.SendAsync(trackEvent);
+        }
         public void Track(string path, EngageEvent trackEvent)
+        {
+            var theEvent = CompleteEvent(path, trackEvent);
+            _dispatcher.Send(trackEvent);
+        }        
+
+        public string RootEventId => _storage.RootEventId;
+
+        EngageEvent CompleteEvent(string path, EngageEvent trackEvent)
         {
             if (path != null && _url != path)
             {
@@ -69,13 +83,8 @@ namespace Adeprimo.Tulo.Engage.Tracker.Sdk.Xamarin
             if (trackEvent.Source.Locale == null)
                 trackEvent.Source.Locale = _eventBuilder.Locale();
 
-
-
-            _dispatcher.Send(trackEvent);
-
+            return trackEvent;
         }
-
-        public string RootEventId => _storage.RootEventId;
 
         void Initialize()
         {
