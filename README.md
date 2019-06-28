@@ -137,7 +137,7 @@ Some events needs to be decorated with custom data not directly exposed as a pro
 
 #### Application information
 
-Collecting information about the APP being executed is implemented using the class "EngageApplication" which in turn uses an implementation of "IApplicationService" to fetch the information. In this SDK we have implemented the interface using Xamarin Essentials. In cases where you don't run Xamarin you need to develop your own implementation of IApplicationService and use that when configuring the tracker.
+Collecting information about the APP being executed is implemented using the class "EngageApplication" which in turn uses an implementation of "IApplicationService" to fetch the information. In this SDK we have implemented the interface using Xamarin Essentials (AppInfo, DeviceDisplay, DeviceInfo, VersionTracking). In cases where you don't run Xamarin you need to develop your own implementation of IApplicationService and use that when configuring the tracker.
 
 The project Tulo.Engage.Tracker.Sdk.Xamarin.CLI contains examples of this kind of implementation and setup.
 
