@@ -32,7 +32,7 @@ var tracker = EngageTrackerBuilder.Build("organisationId", "productId", "eventUr
 
 After initialization the tracker can either be saved as a singleton or you can retrieve the tracker using the "EngageTrackerBuilder".
 
-```C#
+```
  var tracker = EngageTrackerBuilder.GetInstance();
 ```
 
@@ -50,7 +50,7 @@ It is recommended that events are created using the "EventBuilder" in the tracke
 
 #### Creating an event and send it
 
-```C#
+```
  // create a pageview-event
  // eventPrefix defaults to "app"
  // eventVersion defaults to "1"
@@ -75,7 +75,7 @@ An event created with the "EventBuilder" in tracker will decorate the event with
 
 #### Decorating an event further
 
-```c#
+```
  // set content data for an article being read.
  var builder = EngageTrackerBuilder.GetInstance().EventBuilder;
  var trackEvent = builder.Build("pageview");
@@ -114,7 +114,7 @@ EngageTrackerBuilder.GetInstance().Track("/", trackEvent);
 
 User information is probably something you don't want to attach every time you send an event, instead you should "save" the user in the tracker upon initialization.
 
-```c#
+```
 var currentUser = GetCurrentUser(); // Some method to get hold of logged in user
 var tracker = EngageTrackerBuilder.Build("organisationId", "productId", "eventUrl");
 tracker.SaveUser(new EngageUser{PaywayUserId = currentUser.PaywayId, UserId = currentUser.Id,  LoggedIn = true}):
@@ -126,7 +126,7 @@ Until the next time the user is saved, the above user will be used by the tracke
 
 Some events needs to be decorated with custom data not directly exposed as a property on an Engage event. For example if you want to track which "product-filter" a specific pageview is using to retrieve data.
 
-```c#
+```
  var builder = EngageTrackerBuilder.GetInstance().EventBuilder;
  var trackEvent = builder.Build("pageview");
  trackEvent.EventCustomData = new { ProductFilter = "Apparel" };
