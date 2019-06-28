@@ -18,21 +18,21 @@ In order to start sending events you need to initialize the tracker, you can do 
 
 #### Building a tracker with default configuration
 
-```c#
+```
 // using standard configuration
 var tracker = EngageTrackerBuilder.Build("organisationId", "productId", "eventUrl");
 ```
 
 #### Building a tracker with specific Application and Storage-services
 
-```c#
+```
 // using your own implementation for "IApplicationService" and "IStorageService" when not using Xamarin.
 var tracker = EngageTrackerBuilder.Build("organisationId", "productId", "eventUrl", applicationService, storageService);
 ```
 
 After initialization the tracker can either be saved as a singleton or you can retrieve the tracker using the "EngageTrackerBuilder".
 
-```c#
+```C#
  var tracker = EngageTrackerBuilder.GetInstance();
 ```
 
@@ -50,7 +50,7 @@ It is recommended that events are created using the "EventBuilder" in the tracke
 
 #### Creating an event and send it
 
-```c#
+```C#
  // create a pageview-event
  // eventPrefix defaults to "app"
  // eventVersion defaults to "1"
