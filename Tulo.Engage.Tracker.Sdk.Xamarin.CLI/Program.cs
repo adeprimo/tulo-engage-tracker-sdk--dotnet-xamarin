@@ -8,11 +8,21 @@ namespace Tulo.Engage.Tracker.Xamarin.CLI
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("\nWelcome to Engage Tracker sample app.");
+            if (args.Length != 3)
+            {
+                Console.WriteLine("!! Please provide mandatory arguments for organisationId, productId and the eventUrl");
+                Console.WriteLine("$ dotnet run <organisationId> <productId> <eventUrl>\n");
+                Environment.Exit(0);
+            }
+            var organisationId = args[0];
+            var productId = args[1];
+            var eventUrl = args[2];
+
             EngageStorage storage = new EngageStorage(new MemoryStorageService());
             EngageApplication application = new EngageApplication(new CliApplicationService());
 
-            var tracker = EngageTrackerBuilder.Build("wot", "cli", "http://localhost:8080/api/v1/events", storage, application);
+            var tracker = EngageTrackerBuilder.Build(organisationId, productId, eventUrl, storage, application);
 
             var user = new EngageUser
             {
