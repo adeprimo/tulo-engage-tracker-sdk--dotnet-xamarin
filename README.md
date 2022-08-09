@@ -1,6 +1,6 @@
 # Tulo Engage Tracker SDK for Xamarin
 
-This is the tracker SDK for .NET Core with Xamarin support, use this SDK if you want to track events in Tulo Engage using C# and Xamarin. The SDK could also be used in plain C# projects by implementing non-Xamarin specific helper classes, more about that further down.
+This is the tracker SDK for .NET Core with Xamarin support, use this SDK if you want to track events in Tulo Engage using C# and Xamarin. The SDK could also be used in plain C# projects by implementing non-Xamarin specific helper classes, more about that further down..
 
 ## Installation
 
